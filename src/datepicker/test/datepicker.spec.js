@@ -1692,29 +1692,28 @@ describe('datepicker directive', function () {
       expect(getTitle()).toBe('2013');
     });
   });
-});
 
   describe('`init-date` as datepickerOptions', function () {
     var originalConfig = {};
-      beforeEach(inject(function(datepickerConfig) {
-        angular.extend(originalConfig, datepickerConfig);
-        datepickerConfig.initDate = '"November 9, 1980"';
+    beforeEach(inject(function(datepickerConfig) {
+      angular.extend(originalConfig, datepickerConfig);
+      datepickerConfig.initDate = '"November 9, 1980"';
 
-        var wrapElement = $compile('<div><input ng-model="date" datepicker-popup><div>')($rootScope);
-        $rootScope.$digest();
-        assignElements(wrapElement);
-      }));
-      afterEach(inject(function(datepickerConfig) {
-        // return it to the original state
-        angular.extend(datepickerConfig, originalConfig);
-      }));
+      var wrapElement = $compile('<div><input ng-model="date" datepicker-popup><div>')($rootScope);
+      $rootScope.$digest();
+      assignElements(wrapElement);
+    }));
+    afterEach(inject(function(datepickerConfig) {
+      // return it to the original state
+      angular.extend(datepickerConfig, originalConfig);
+    }));
 
-      it('does not alter the model', function() {
-        expect($rootScope.date).toBe(null);
-      });
+    it('does not alter the model', function() {
+      expect($rootScope.date).toBe(null);
+    });
 
-      it('shows the correct title', function() {
-        expect(getTitle()).toBe('November 1980');
-      });
+    it('shows the correct title', function() {
+      expect(getTitle()).toBe('November 1980');
     });
   });
+});
