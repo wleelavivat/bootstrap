@@ -42,7 +42,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     }
   });
 
-  $scope.datepickerMode = angular.isDefined($attrs.datepickerMode) ? $interpolate($attrs.datepickerMode)($scope.$parent) : datepickerConfig.datepickerMode;
+  $scope.datepickerMode = $scope.$parent.$eval($attrs.datepickerMode) || datepickerConfig.datepickerMode;
   $scope.uniqueId = 'datepicker-' + $scope.$id + '-' + Math.floor(Math.random() * 10000);
   this.activeDate = angular.isDefined($attrs.initDate) ? $scope.$parent.$eval($attrs.initDate) : new Date();
 
@@ -487,9 +487,6 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
       });
       if (attrs.dateDisabled) {
         datepickerEl.attr('date-disabled', 'dateDisabled({ date: date, mode: mode })');
-      }
-      if (attrs.datepickerMode) {
-        datepickerEl.attr('datepicker-mode', attrs.datepickerMode);
       }
 
       function parseDate(viewValue) {
