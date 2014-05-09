@@ -1696,6 +1696,7 @@ describe('datepicker directive', function () {
   describe('`init-date` as datepickerOptions', function () {
     var originalConfig = {};
     beforeEach(inject(function(datepickerConfig) {
+      $rootScope.date = null;
       angular.extend(originalConfig, datepickerConfig);
       datepickerConfig.initDate = '"November 9, 1980"';
 
