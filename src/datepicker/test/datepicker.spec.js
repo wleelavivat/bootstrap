@@ -1698,7 +1698,7 @@ describe('datepicker directive', function () {
     var originalConfig = {};
       beforeEach(inject(function(datepickerConfig) {
         angular.extend(originalConfig, datepickerConfig);
-        datepickerConfig.initDate = "'November 9, 1980'";
+        datepickerConfig.initDate = '"November 9, 1980"';
 
         var wrapElement = $compile('<div><input ng-model="date" datepicker-popup><div>')($rootScope);
         $rootScope.$digest();
